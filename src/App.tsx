@@ -1,19 +1,11 @@
 import React from 'react';
 import './App.sass';
+import Card from './components/Card';
+import CardInterface from './types/CardInterface';
 
 function App() {
 
-  interface Card {
-    date: string,
-    points: Point[]
-  }
-
-  interface Point {
-    name: string,
-    description?: string,
-  }
-
-  const cards: Card[] = [
+  const cards: CardInterface[] = [
     {
       date: "10-04-2022",
       points: [
@@ -41,37 +33,15 @@ function App() {
     <div className="app">
       <header className="header"></header>
       <main className="content">
-        
         <div className="content__container">
-            {
-              cards.reverse().map((card) => {
-                return (
-                  <div className='card' key={card.date}>
-                    <h2 className='card__date'>{card.date}</h2>
-                    <ul className="card__points">
-                      {
-                        card.points?.map((point, index) => {
-                          return (
-                            <li className='card__points-item' key={index}>
-                              <div className="point">
-                                <h3>{point.name}</h3>
-                                {
-                                  point.description ?
-                                    <p>{point.description}</p> :
-                                    ""
-                                }
-                              </div>
-                            </li>
-                          )
-                        })
-                      }
-                    </ul>
-                    <button className='card__add-button'>+</button>
-                  </div>
-                )
-              })
-            }
-            {/* <h2 className="card__date">{`${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`}</h2>
+          {
+            cards.reverse().map((card) => {
+              return (
+                <Card card={card} key={card.date} />
+              )
+            })
+          }
+          {/* <h2 className="card__date">{`${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`}</h2>
             <ul className="card__points">
               <li className='card__points-item'>
                 <div className="point">
