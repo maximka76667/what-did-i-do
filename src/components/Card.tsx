@@ -1,6 +1,5 @@
 import React, { ChangeEventHandler, FocusEventHandler, FormEventHandler, MouseEventHandler, useEffect, useState } from 'react'
-import CardInterface from '../types/CardInterface';
-import PointInterface from '../types/PointInterface';
+import { CardInterface, PointInterface } from '../interfaces/index';
 
 const Card = (props: { card: CardInterface, }) => {
 
@@ -43,6 +42,7 @@ const Card = (props: { card: CardInterface, }) => {
 
   useEffect(() => {
     setPoints(card.points);
+    // eslint-disable-next-line
   }, [])
 
   return (
@@ -50,18 +50,17 @@ const Card = (props: { card: CardInterface, }) => {
       <h2 className='card__date'>{card.date}</h2>
       <ul className="card__points">
         {
-          points?.map((point, index) => {
-            return (
-              <li className='card__points-item' key={index}>
-                <div className="point">
-                  <h3>{point.name}</h3>
-                  {
-                    point.description && <p>{point.description}</p>
-                  }
-                </div>
-              </li>
-            )
-          })
+          points?.map((point, index) => (
+            <li className='card__points-item' key={index}>
+              <div className="point">
+                <h3>{point.name}</h3>
+                {
+                  point.description && <p>{point.description}</p>
+                }
+              </div>
+            </li>
+          )
+          )
         }
       </ul>
       {
