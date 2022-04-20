@@ -2,7 +2,7 @@
 
 .header
   height: 80px
-  background-color: #fdf
+  background-color: #f7f7f7
 
 .content
   width: 90%
@@ -10,15 +10,15 @@
 
   &__container
     display: grid
-    grid-template-columns: repeat(3, 1fr)
+    grid-template-columns: repeat(4, 1fr)
 
 .card
   margin: 10px
+  background-color: #f7f7f7
+  padding: 15px 30px
+  border-radius: 5px
 
   &__date
-    background-color: grey
-    border-radius: 5px
-    padding: 10px
 
   &__points
     padding: 0
@@ -26,5 +26,18 @@
     list-style-type: none
 
   &__add-button
-    width: 100%
-    padding: 10px
+    display: block
+    width: 60%
+    padding: 5px
+    border: 0
+    outline: 0
+    transition: all 0.2s
+    margin: 15px auto 0
+    background-color: #d7d7d7
+
+    &:hover
+      background-color: #fff
+      box-shadow: 0 0 0 2px #000
+
+    &:focus
+      outline: 1px solid

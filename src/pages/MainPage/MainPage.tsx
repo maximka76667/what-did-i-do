@@ -1,11 +1,11 @@
-import React from 'react'
-import Footer from '../../components/Footer'
-import Header from '../../components/Header'
-import Main from '../../components/Main'
-import { CardInterface } from '../../interfaces'
+import React from 'react';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
+import Main from '../../components/Main';
+import { CardInterface } from '../../interfaces';
 import './MainPage.sass';
 
-const MainPage = (props: { cards: CardInterface[] }) => {
+function MainPage(props: { cards: CardInterface[] }) {
   const { cards } = props;
 
   return (
@@ -14,7 +14,7 @@ const MainPage = (props: { cards: CardInterface[] }) => {
       <Main cards={cards} />
       <Footer />
     </>
-  )
+  );
 }
 
-export default MainPage
+export default MainPage;
