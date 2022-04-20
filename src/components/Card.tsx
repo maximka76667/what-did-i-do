@@ -2,8 +2,9 @@ import React, {
   ChangeEventHandler, FocusEventHandler, FormEventHandler, MouseEventHandler, useEffect, useState,
 } from 'react';
 import { CardInterface, PointInterface } from '../interfaces/index';
+import Point from './Point';
 
-function Card(props: { card: CardInterface, }) {
+function Card(props: { card: CardInterface }) {
   const [points, setPoints] = useState<PointInterface[]>();
   const [isNewPoint, setIsNewPoint] = useState(false);
   const [newPointName, setNewPointName] = useState('');
@@ -54,12 +55,7 @@ function Card(props: { card: CardInterface, }) {
         {
           points && points.map((point) => (
             <li className="card__points-item" key={point._id}>
-              <div className="point">
-                <h3>{point.name}</h3>
-                {
-                  point.description && <p>{point.description}</p>
-                }
-              </div>
+              <Point point={point} />
             </li>
           ))
         }
