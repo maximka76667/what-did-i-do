@@ -7,7 +7,7 @@ class Auth {
     this.baseUrl = baseUrl;
   }
 
-  static checkResponse(res: Response) {
+  private static checkResponse(res: Response) {
     if (!res.ok) return Promise.reject(new Error(`Error ${res.status}`));
     return res.json();
   }
