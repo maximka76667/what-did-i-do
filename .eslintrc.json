@@ -46,7 +46,13 @@
             }
         ],
         "no-underscore-dangle": 0,
-        "jsx-a11y/no-autofocus": 0
+        "jsx-a11y/no-autofocus": 0,
+        "no-extra-semi": "error",
+        "semi": "off",
+        "quotes": [
+            "error",
+            "double"
+        ]
     },
     "settings": {
         "import/resolver": {

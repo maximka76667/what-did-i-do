@@ -1,9 +1,9 @@
-import React from 'react';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
-import Main from '../../components/Main';
-import { CardInterface } from '../../interfaces';
-import './MainPage.sass';
+import React from "react";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import Main from "../../components/Main";
+import { CardInterface } from "../../interfaces";
+import "./MainPage.sass";
 
 function MainPage(props: { cards: CardInterface[] }) {
   const { cards } = props;

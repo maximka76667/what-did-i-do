@@ -1,13 +1,13 @@
 import React, {
   ChangeEventHandler, FocusEventHandler, FormEventHandler, MouseEventHandler, useEffect, useState,
-} from 'react';
-import { CardInterface, PointInterface } from '../interfaces/index';
-import Point from './Point';
+} from "react";
+import { CardInterface, PointInterface } from "../interfaces/index";
+import Point from "./Point";
 
 function Card(props: { card: CardInterface }) {
   const [points, setPoints] = useState<PointInterface[]>();
   const [isNewPoint, setIsNewPoint] = useState(false);
-  const [newPointName, setNewPointName] = useState('');
+  const [newPointName, setNewPointName] = useState("");
 
   const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
@@ -18,13 +18,13 @@ function Card(props: { card: CardInterface }) {
     if (points && newPointName) {
       setPoints(
         [...points, {
-          _id: '',
+          _id: "",
           name: newPointName,
         }],
       );
     }
     setIsNewPoint(false);
-    setNewPointName('');
+    setNewPointName("");
   };
 
   const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
@@ -66,7 +66,7 @@ function Card(props: { card: CardInterface }) {
             <form onSubmit={onSubmit}>
               <input type="text" value={newPointName} onChange={onChangeNewPointName} autoFocus onBlur={onBlur} />
             </form>
-          ) : ''
+          ) : ""
       }
       <button type="submit" className="card__add-button" onClick={handleClick}>+</button>
     </div>

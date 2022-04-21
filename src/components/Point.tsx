@@ -1,5 +1,5 @@
-import React, { MouseEventHandler, useState } from 'react';
-import { PointInterface } from '../interfaces';
+import React, { MouseEventHandler, useState } from "react";
+import { PointInterface } from "../interfaces";
 
 function Point(props: { point: PointInterface }) {
   const { point: { name, description } } = props;
@@ -12,7 +12,7 @@ function Point(props: { point: PointInterface }) {
   };
 
   return (
-    <button type="button" onClick={changeDescriptionVisibility} className={`point${description ? ' point_described' : ''}${isDescriptionVisible ? ' point_opened' : ''}`}>
+    <button type="button" onClick={changeDescriptionVisibility} className={`point${description ? " point_described" : ""}${isDescriptionVisible ? " point_opened" : ""}`}>
       <h3 className="point__name">{name}</h3>
       {
         description && isDescriptionVisible && <p className="point__description">{description}</p>

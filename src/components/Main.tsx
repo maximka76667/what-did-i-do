@@ -1,6 +1,6 @@
-import React from 'react';
-import Card from './Card';
-import { CardInterface } from '../interfaces';
+import React from "react";
+import Card from "./Card";
+import { CardInterface } from "../interfaces";
 
 function Main(props: { cards: CardInterface[] }) {
   const { cards } = props;
@@ -8,7 +8,7 @@ function Main(props: { cards: CardInterface[] }) {
   const today = new Date();
 
   const todayCard = {
-    _id: '0',
+    _id: "0",
     points: [],
     date: `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`,
   };
