@@ -1,19 +1,19 @@
 import { UserDataInterface } from "../interfaces";
 
 class Auth {
-  baseUrl;
+  private _baseUrl;
 
   constructor(baseUrl: string) {
-    this.baseUrl = baseUrl;
+    this._baseUrl = baseUrl;
   }
 
-  private static checkResponse(res: Response) {
+  private static _checkResponse(res: Response) {
     if (!res.ok) return Promise.reject(new Error(`Error ${res.status}`));
     return res.json();
   }
 
   register({ name, email, password }: UserDataInterface) {
-    return fetch(`${this.baseUrl}/signup`, {
+    return fetch(`${this._baseUrl}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,11 +24,11 @@ class Auth {
         password,
       }),
     })
-      .then(Auth.checkResponse);
+      .then(Auth._checkResponse);
   }
 
   login({ email, password }: UserDataInterface) {
-    return fetch(`${this.baseUrl}/signin`, {
+    return fetch(`${this._baseUrl}/signin`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,29 +38,29 @@ class Auth {
         password,
       }),
     })
-      .then(Auth.checkResponse);
+      .then(Auth._checkResponse);
   }
 
   logout(token: UserDataInterface) {
-    return fetch(`${this.baseUrl}/signout`, {
+    return fetch(`${this._baseUrl}/signout`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     })
-      .then(Auth.checkResponse);
+      .then(Auth._checkResponse);
   }
 
   getEmail(token: UserDataInterface) {
-    return fetch(`${this.baseUrl}/users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     })
-      .then(Auth.checkResponse);
+      .then(Auth._checkResponse);
   }
 }
 
