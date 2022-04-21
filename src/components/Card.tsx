@@ -1,7 +1,7 @@
 import React, {
   ChangeEventHandler, FocusEventHandler, FormEventHandler, MouseEventHandler, useEffect, useState,
 } from "react";
-import { CardInterface, PointInterface } from "../interfaces/index";
+import { CardInterface, PointInterface } from "../interfaces";
 import Point from "./Point";
 
 function Card(props: { card: CardInterface }) {

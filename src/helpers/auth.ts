@@ -1,4 +1,4 @@
-import { UserDataInterface } from "../interfaces/index";
+import { UserDataInterface } from "../interfaces";
 
 class Auth {
   baseUrl;

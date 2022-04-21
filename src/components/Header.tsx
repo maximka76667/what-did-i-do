@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function Header() {
+  const { email } = useContext(CurrentUserContext);
   return (
-    <header className="header" />
+    <header className="header">
+      <p>{email}</p>
+    </header>
   );
 }
 

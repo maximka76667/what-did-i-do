@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.sass";
-import { CardInterface } from "./interfaces";
-import MainPage from "./pages/index";
+import CurrentUserContext from "./contexts/CurrentUserContext";
+import { CardInterface, UserInterface } from "./interfaces";
+import MainPage from "./pages";
 
 function App() {
   const cards: CardInterface[] = [
@@ -33,9 +34,17 @@ function App() {
     },
   ].reverse();
 
+  const [currentUser, setCurrentUser] = useState<UserInterface>({ email: "", name: "" });
+
+  useEffect(() => {
+    setCurrentUser({ email: "321@gmail.com", name: "Maxim" })
+  })
+
   return (
     <div className="app">
-      <MainPage cards={cards} />
+      <CurrentUserContext.Provider value={currentUser}>
+        <MainPage cards={cards} />
+      </CurrentUserContext.Provider>
     </div>
   );
 }
