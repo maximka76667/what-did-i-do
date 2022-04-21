@@ -1,6 +1,7 @@
 interface UserInterface {
   email: string,
-  name: string
+  name: string,
+  password?: string
 }
 
 export default UserInterface;

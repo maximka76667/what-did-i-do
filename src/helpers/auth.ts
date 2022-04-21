@@ -1,4 +1,4 @@
-import { UserDataInterface } from "../interfaces";
+import { UserInterface } from "../interfaces";
 
 class Auth {
   private _baseUrl;
@@ -12,7 +12,7 @@ class Auth {
     return res.json();
   }
 
-  register({ name, email, password }: UserDataInterface) {
+  register({ name, email, password }: UserInterface) {
     return fetch(`${this._baseUrl}/signup`, {
       method: "POST",
       headers: {
@@ -27,7 +27,7 @@ class Auth {
       .then(Auth._checkResponse);
   }
 
-  login({ email, password }: UserDataInterface) {
+  login({ email, password }: UserInterface) {
     return fetch(`${this._baseUrl}/signin`, {
       method: "POST",
       headers: {
@@ -41,7 +41,7 @@ class Auth {
       .then(Auth._checkResponse);
   }
 
-  logout(token: UserDataInterface) {
+  logout(token: string) {
     return fetch(`${this._baseUrl}/signout`, {
       method: "GET",
       headers: {
@@ -52,7 +52,7 @@ class Auth {
       .then(Auth._checkResponse);
   }
 
-  getEmail(token: UserDataInterface) {
+  getEmail(token: string) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: {
