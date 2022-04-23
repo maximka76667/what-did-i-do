@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.sass";
 import CurrentUserContext from "./contexts/CurrentUserContext";
 import { CardInterface, UserInterface } from "./interfaces";
-import MainPage from "./pages";
+import { Home, Login, Signup } from "./pages";
 
 function App() {
   const cards: CardInterface[] = [
@@ -35,15 +36,23 @@ function App() {
   ].reverse();
 
   const [currentUser, setCurrentUser] = useState<UserInterface>({ email: "", name: "" });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    setCurrentUser({ email: "321@gmail.com", name: "Maxim" })
+    setCurrentUser({ email: "321@gmail.com", name: "Maxim" });
+    setIsLoggedIn(true);
   })
 
   return (
     <div className="app">
       <CurrentUserContext.Provider value={currentUser}>
-        <MainPage cards={cards} />
+        <Router>
+          <Routes>
+            <Route index element={<Home isLoggedIn={isLoggedIn} cards={cards} />} />
+            <Route path="/signin" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+        </Router>
       </CurrentUserContext.Provider>
     </div>
   );

@@ -3,18 +3,18 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Main from "../../components/Main";
 import { CardInterface } from "../../interfaces";
-import "./MainPage.sass";
+import "./Home.sass";
 
-function MainPage(props: { cards: CardInterface[] }) {
-  const { cards } = props;
+function Home(props: { cards: CardInterface[], isLoggedIn: boolean }) {
+  const { cards, isLoggedIn } = props;
 
   return (
     <>
-      <Header />
+      <Header isLoggedIn={isLoggedIn} />
       <Main cards={cards} />
       <Footer />
     </>
   );
 }
 
-export default MainPage;
+export default Home;

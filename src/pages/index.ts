@@ -1,3 +1,3 @@
-import MainPage from "./MainPage/MainPage";
-
-export default MainPage;
+export { default as Home } from "./Home/Home";
+export { default as Login } from "./Login/Login";
+export { default as Signup } from "./Signup/Signup";
