@@ -34,10 +34,27 @@
     transition: all 0.2s
     margin: 15px auto 0
     background-color: #d7d7d7
+    position: relative
+    z-index: 1
+
+    &:before
+      content: ''
+      position: absolute
+      top: 0
+      width: 0
+      right: 0
+      bottom: 0
+      background-color: #aaaaff
+      transition: all 0.2s
+      z-index: -1
 
     &:hover
       background-color: #fff
       box-shadow: 0 0 0 2px #000
+
+    &:hover:before
+      width: 100%
+      left: 0
 
     &:focus
       outline: 1px solid
