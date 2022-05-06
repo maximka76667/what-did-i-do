@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "./Card";
 import { CardInterface } from "../interfaces";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function Main(props: { cards: CardInterface[] }) {
   const { cards } = props;
 
+  const { name } = useContext(CurrentUserContext);
   const today = new Date();
 
   const todayCard = {
@@ -15,7 +17,12 @@ function Main(props: { cards: CardInterface[] }) {
 
   return (
     <main className="content">
-      <h1 className="content__heading">How was your day?</h1>
+      <h1 className="content__heading">
+        How was your day,
+        {" "}
+        {name || "Stranger"}
+        ?
+      </h1>
       <p className="content__subheading">Would you like to share with me your achievements today?</p>
       <div className="content__container">
         <Card card={todayCard} key={todayCard.date} />

@@ -1,8 +1,9 @@
-import React, { ChangeEventHandler, useState } from "react"
+import React, { ChangeEventHandler, FormEventHandler, useState } from "react"
 import "./Login.sass"
 import validator from "validator";
+import { UserFunction, UserInterface } from "../../interfaces";
 
-function Login() {
+function Login({ onLogin }: { onLogin: UserFunction }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -45,18 +46,23 @@ function Login() {
     handleValidation(e.target);
   }
 
+  const handleLogin: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+
+    onLogin({ email, password } as UserInterface);
+  }
+
   return (
     <div className="login">
-      <form className="login__form" noValidate>
+      <form className="login__form" noValidate onSubmit={handleLogin}>
         <h1 className="login__heading">Login</h1>
         <label className={`login__label${email ? " login__label_has-value" : ""}`} htmlFor="email">
           <input id="email" name="email" type="email" className="login__input login__email" value={email} onChange={handleEmailChange} required />
           <span className="login__placeholder">Email</span>
         </label>
         <p className="login__input-error">{emailError}</p>
-
-        <label className={`login__label${password ? " login__label_has-value" : ""}`} htmlFor="email">
-          <input type="password" name="password" className="login__input login__password" value={password} onChange={handlePasswordChange} required />
+        <label className={`login__label${password ? " login__label_has-value" : ""}`} htmlFor="password">
+          <input id="password" type="password" name="password" className="login__input login__password" value={password} onChange={handlePasswordChange} required />
           <span className="login__placeholder">Password</span>
         </label>
         <p className="login__input-error">{passwordError}</p>
@@ -66,7 +72,6 @@ function Login() {
             Remember me
           </label>
           <button type="submit" className="login__submit-button">Login</button>
-
         </div>
       </form>
     </div>

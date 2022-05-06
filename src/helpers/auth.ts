@@ -41,7 +41,7 @@ class Auth {
       .then(Auth._checkResponse);
   }
 
-  logout(token: string) {
+  signout(token: string) {
     return fetch(`${this._baseUrl}/signout`, {
       method: "GET",
       headers: {
@@ -64,6 +64,6 @@ class Auth {
   }
 }
 
-const auth = new Auth("https://urlhere");
+const auth = new Auth("http://localhost:3001");
 
 export default auth;
