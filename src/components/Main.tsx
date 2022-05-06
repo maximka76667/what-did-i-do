@@ -3,9 +3,7 @@ import Card from "./Card";
 import { CardInterface } from "../interfaces";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function Main(props: { cards: CardInterface[] }) {
-  const { cards } = props;
-
+function Main({ cards }: { cards: CardInterface[] }) {
   const { name } = useContext(CurrentUserContext);
   const today = new Date();
 
@@ -18,9 +16,8 @@ function Main(props: { cards: CardInterface[] }) {
   return (
     <main className="content">
       <h1 className="content__heading">
-        How was your day,
-        {" "}
-        {name || "Stranger"}
+        How was your day
+        {name ? `, ${name}` : ""}
         ?
       </h1>
       <p className="content__subheading">Would you like to share with me your achievements today?</p>
