@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import LoginPopup from "../../components/LoginPopup";
-import Main from "../../components/Main";
+import {
+  Header, Footer, LoginPopup, Main,
+} from "../../components";
 import { CardInterface, UserFunction } from "../../interfaces";
 import "./Home.sass";
 
