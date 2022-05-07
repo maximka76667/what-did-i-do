@@ -1,10 +1,8 @@
 import React from "react"
-import { UserFunction } from "../interfaces";
+import { LoginPopupInterface } from "../interfaces";
 import { Login } from "../pages";
 
-function LoginPopup({ isOpened, onLogin, isLoggedIn }: {
-  isOpened: boolean, onLogin: UserFunction, isLoggedIn: boolean
-}) {
+function LoginPopup({ isOpened, onLogin, isLoggedIn }: LoginPopupInterface) {
   return (
     <div className={`login-popup ${!isLoggedIn && isOpened ? "login-popup_opened" : ""}`}>
       <Login onLogin={onLogin} />

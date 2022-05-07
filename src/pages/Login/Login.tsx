@@ -1,9 +1,9 @@
 import React, { ChangeEventHandler, FormEventHandler, useState } from "react"
 import "./Login.sass"
 import validator from "validator";
-import { UserFunction, UserInterface } from "../../interfaces";
+import { LoginInterface, UserInterface } from "../../interfaces";
 
-function Login({ onLogin }: { onLogin: UserFunction }) {
+function Login({ onLogin }: LoginInterface) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

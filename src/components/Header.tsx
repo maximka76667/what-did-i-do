@@ -1,10 +1,9 @@
 import React, { MouseEventHandler, useContext } from "react";
 import { Link } from "react-router-dom"
 import CurrentUserContext from "../contexts/CurrentUserContext";
+import { HeaderInterface } from "../interfaces";
 
-function Header({ isLoggedIn, onSignout, onLoginButtonClick }: {
-  isLoggedIn: boolean, onSignout: () => void, onLoginButtonClick: () => void
-}) {
+function Header({ isLoggedIn, onSignout, onLoginButtonClick }: HeaderInterface) {
   const { email } = useContext(CurrentUserContext);
 
   const handleSignout: MouseEventHandler<HTMLButtonElement> = (e) => {

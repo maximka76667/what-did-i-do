@@ -1,10 +1,10 @@
 import React, {
   ChangeEventHandler, FocusEventHandler, FormEventHandler, MouseEventHandler, useEffect, useState,
 } from "react";
-import { CardInterface, PointInterface } from "../interfaces";
+import { CardComponentInterface, PointInterface } from "../interfaces";
 import Point from "./Point";
 
-function Card(props: { card: CardInterface }) {
+function Card({ card }: CardComponentInterface) {
   const [points, setPoints] = useState<PointInterface[]>();
   const [isNewPoint, setIsNewPoint] = useState(false);
   const [newPointName, setNewPointName] = useState("");
@@ -40,8 +40,6 @@ function Card(props: { card: CardInterface }) {
   const onChangeNewPointName: ChangeEventHandler<HTMLInputElement> = (e) => {
     setNewPointName(e.target.value);
   };
-
-  const { card } = props;
 
   useEffect(() => {
     setPoints(card.points);

@@ -1,9 +1,7 @@
 import React, { MouseEventHandler, useState } from "react";
-import { PointInterface } from "../interfaces";
+import { PointComponentInterface } from "../interfaces";
 
-function Point(props: { point: PointInterface }) {
-  const { point: { name, description } } = props;
-
+function Point({ point: { name, description } }: PointComponentInterface) {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
 
   const changeDescriptionVisibility: MouseEventHandler<HTMLButtonElement> = (e) => {

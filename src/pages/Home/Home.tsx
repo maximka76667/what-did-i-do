@@ -2,16 +2,12 @@ import React, { useState } from "react";
 import {
   Header, Footer, LoginPopup, Main,
 } from "../../components";
-import { CardInterface, UserFunction } from "../../interfaces";
+import { HomeInterface } from "../../interfaces";
 import "./Home.sass";
 
-function Home(props: {
-  cards: CardInterface[], isLoggedIn: boolean, onSignout: () => void, onLogin: UserFunction
-}) {
-  const {
-    cards, isLoggedIn, onSignout, onLogin,
-  } = props;
-
+function Home({
+  cards, isLoggedIn, onSignout, onLogin,
+}: HomeInterface) {
   const [isLoginPopupOpened, setIsLoginPopupOpened] = useState(false);
 
   function changeLoginPopupVisibility() {

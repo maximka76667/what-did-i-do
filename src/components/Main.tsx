@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import Card from "./Card";
-import { CardInterface } from "../interfaces";
+import { MainInterface } from "../interfaces";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function Main({ cards }: { cards: CardInterface[] }) {
+function Main({ cards }: MainInterface) {
   const { name } = useContext(CurrentUserContext);
   const today = new Date();
 
