@@ -22,7 +22,9 @@ function Main({ cards }: MainInterface) {
       </h1>
       <p className="content__subheading">Would you like to share with me your achievements today?</p>
       <div className="content__container">
-        <Card card={todayCard} key={todayCard.date} />
+        {
+          cards.filter((card) => card.date === todayCard.date).length > 0 ? "" : <Card card={todayCard} key={todayCard.date} todayCard />
+        }
         {
           cards.map((card) => (
             <Card card={card} key={card.date} />
