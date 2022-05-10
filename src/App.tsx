@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.sass";
 import CurrentUserContext from "./contexts/CurrentUserContext";
-import auth from "./helpers/auth";
-import mainApi from "./helpers/mainApi";
+import auth from "./utils/auth";
+import mainApi from "./utils/mainApi";
 import { CardInterface, UserFunction, UserInterface } from "./interfaces";
 import { Home, Login, Signup } from "./pages";
 

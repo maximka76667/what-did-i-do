@@ -7,14 +7,15 @@ import React, {
   useState,
 } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import mainApi from "../../helpers/mainApi";
+import mainApi from "../../utils/mainApi";
 import { CardComponentInterface, PointInterface } from "../../interfaces";
 import Point from "../Point/Point";
 import "./Card.sass"
 
 function Card({
   card: {
-    _id, date, points, owner,
+    _id, date, points,
+    // owner,
   }, todayCard, onLoginButtonClick,
 }: CardComponentInterface) {
   const [cardId, setCardId] = useState("");
@@ -87,8 +88,8 @@ function Card({
   return (
     <div className="card">
       <h2 className="card__date">{date}</h2>
-      <p>{cardId}</p>
-      <p>{owner}</p>
+      {/* <p>{cardId}</p>
+      <p>{owner}</p> */}
       <ul className="card__points">
         {
           currentPoints && currentPoints.map((point, index) => (
