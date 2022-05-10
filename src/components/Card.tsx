@@ -1,5 +1,9 @@
 import React, {
-  ChangeEventHandler, FocusEventHandler, FormEventHandler, MouseEventHandler, useEffect, useState,
+  ChangeEventHandler,
+  FormEventHandler,
+  MouseEventHandler,
+  useEffect,
+  useState,
 } from "react";
 import mainApi from "../helpers/mainApi";
 import { CardComponentInterface, PointInterface } from "../interfaces";
@@ -10,6 +14,7 @@ function Card({
     _id, date, points, owner,
   }, todayCard,
 }: CardComponentInterface) {
+  const [cardId, setCardId] = useState("");
   const [currentPoints, setPoints] = useState<PointInterface[]>([]);
   const [isNewPoint, setIsNewPoint] = useState(false);
   const [newPointName, setNewPointName] = useState("");
@@ -23,16 +28,19 @@ function Card({
     if (todayCard) {
       mainApi.addCard({
         date,
-        points: [...currentPoints, newPoint],
+        points: [],
       })
-      return;
+        .then((res) => {
+          setCardId(res._id);
+          mainApi.updateCard(res._id, newPoint);
+        })
+    } else {
+      mainApi.updateCard(cardId, newPoint);
     }
-    mainApi.updateCard(_id, newPoint);
   }
 
   const addPoint = () => {
     const newPoint = {
-      _id: "",
       name: newPointName,
     }
     updateCard(newPoint);
@@ -50,10 +58,13 @@ function Card({
     addPoint();
   };
 
-  const onBlur: FocusEventHandler<HTMLInputElement> = (e) => {
-    e.preventDefault();
-    addPoint();
-  };
+  // Fix double submiting form's onSubmit and input's onBlur
+  // Delete or leave submit on blur?
+  // const onBlur: FocusEventHandler<HTMLInputElement> = (e) => {
+  //   e.preventDefault();
+  //   addPoint();
+  //   // onSubmit(e as any);
+  // };
 
   const onChangeNewPointName: ChangeEventHandler<HTMLInputElement> = (e) => {
     setNewPointName(e.target.value);
@@ -61,18 +72,20 @@ function Card({
 
   useEffect(() => {
     setPoints(points);
+    setCardId(_id);
     // eslint-disable-next-line
   }, [])
 
   return (
     <div className="card">
       <h2 className="card__date">{date}</h2>
-      <p>{_id}</p>
+      <p>{cardId}</p>
       <p>{owner}</p>
       <ul className="card__points">
         {
-          currentPoints && currentPoints.map((point) => (
-            <li className="card__points-item" key={point._id}>
+          currentPoints && currentPoints.map((point, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <li className="card__points-item" key={index}>
               <Point point={point} />
             </li>
           ))
@@ -82,7 +95,12 @@ function Card({
         isNewPoint
           ? (
             <form onSubmit={onSubmit}>
-              <input type="text" value={newPointName} onChange={onChangeNewPointName} autoFocus onBlur={onBlur} />
+              <input
+                type="text"
+                value={newPointName}
+                onChange={onChangeNewPointName}
+                autoFocus
+              />
             </form>
           ) : ""
       }

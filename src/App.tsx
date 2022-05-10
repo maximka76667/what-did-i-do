@@ -8,35 +8,6 @@ import { CardInterface, UserFunction, UserInterface } from "./interfaces";
 import { Home, Login, Signup } from "./pages";
 
 function App() {
-  // const cards: CardInterface[] = [
-  //   {
-  //     _id: "1a",
-  //     date: "10-4-2022",
-  //     points: [
-  //       {
-  //         _id: "1x",
-  //         name: "Read book",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     _id: "2a",
-  //     date: "11-4-2022",
-  //     points: [
-  //       {
-  //         _id: "2x",
-  //         name: "Read book",
-  //         description: "",
-  //       },
-  //       {
-  //         _id: "3x",
-  //         name: "Changed hairstyle",
-  //         description: "It was very... description",
-  //       },
-  //     ],
-  //   },
-  // ].reverse();
-
   const [currentUser, setCurrentUser] = useState<UserInterface>({ email: "", name: "" });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [cards, setCards] = useState<CardInterface[]>([])
@@ -60,7 +31,6 @@ function App() {
         // else props.history.push(requestedPathname);
         mainApi.getCards()
           .then(({ cards: serverCards }: { cards: CardInterface[] }) => {
-            console.log(cards);
             const currentUserCards = serverCards.filter((card) => card.owner === res.user._id);
             setCards(currentUserCards);
           })
