@@ -24,19 +24,19 @@ function Card({
     setIsNewPoint(true);
   };
 
-  function updateCard(newPoint: PointInterface) {
+  async function updateCard(newPoint: PointInterface) {
+    // Problem: user creates new today card on every point adding
+    // Fix: remove this card and create another one with server data
+    let id = cardId;
     if (todayCard) {
-      mainApi.addCard({
+      const newCard = await mainApi.addCard({
         date,
         points: [],
       })
-        .then((res) => {
-          setCardId(res._id);
-          mainApi.updateCard(res._id, newPoint);
-        })
-    } else {
-      mainApi.updateCard(cardId, newPoint);
+      id = newCard._id;
+      setCardId(id);
     }
+    mainApi.updateCard(id, newPoint);
   }
 
   const addPoint = () => {
