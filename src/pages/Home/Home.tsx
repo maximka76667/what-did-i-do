@@ -21,9 +21,14 @@ function Home({
         onLoginButtonClick={changeLoginPopupVisibility}
         isLoggedIn={isLoggedIn}
       />
-      <Main cards={cards} onLoginButtonClick={changeLoginPopupVisibility} />
+      <Main cards={cards} changeLoginPopupVisibility={changeLoginPopupVisibility} />
       <Footer />
-      <LoginPopup isLoggedIn={isLoggedIn} onLogin={onLogin} isOpened={isLoginPopupOpened} />
+      <LoginPopup
+        isLoggedIn={isLoggedIn}
+        onLogin={onLogin}
+        changeLoginPopupVisibility={changeLoginPopupVisibility}
+        isOpened={isLoginPopupOpened}
+      />
     </>
   );
 }

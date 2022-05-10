@@ -4,7 +4,7 @@ import { MainInterface } from "../../interfaces";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./Main.sass"
 
-function Main({ cards, onLoginButtonClick }: MainInterface) {
+function Main({ cards, changeLoginPopupVisibility }: MainInterface) {
   const { name } = useContext(CurrentUserContext);
   const today = new Date();
 
@@ -24,7 +24,7 @@ function Main({ cards, onLoginButtonClick }: MainInterface) {
       <p className="content__subheading">Would you like to share with me your achievements today?</p>
       <div className="content__container">
         {
-          cards.filter((card) => card.date === todayCard.date).length > 0 ? "" : <Card card={todayCard} key={todayCard.date} todayCard onLoginButtonClick={onLoginButtonClick} />
+          cards.filter((card) => card.date === todayCard.date).length > 0 ? "" : <Card card={todayCard} key={todayCard.date} todayCard onLoginButtonClick={changeLoginPopupVisibility} />
         }
         {
           cards.map((card) => (
