@@ -3,7 +3,7 @@ import Card from "./Card";
 import { MainInterface } from "../interfaces";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function Main({ cards }: MainInterface) {
+function Main({ cards, onLoginButtonClick }: MainInterface) {
   const { name } = useContext(CurrentUserContext);
   const today = new Date();
 
@@ -23,7 +23,7 @@ function Main({ cards }: MainInterface) {
       <p className="content__subheading">Would you like to share with me your achievements today?</p>
       <div className="content__container">
         {
-          cards.filter((card) => card.date === todayCard.date).length > 0 ? "" : <Card card={todayCard} key={todayCard.date} todayCard />
+          cards.filter((card) => card.date === todayCard.date).length > 0 ? "" : <Card card={todayCard} key={todayCard.date} todayCard onLoginButtonClick={onLoginButtonClick} />
         }
         {
           cards.map((card) => (

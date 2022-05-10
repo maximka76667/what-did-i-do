@@ -10,6 +10,7 @@ function Header({ isLoggedIn, onSignout, onLoginButtonClick }: HeaderInterface) 
     e.preventDefault();
 
     onSignout();
+    onLoginButtonClick();
   }
 
   const handleLoginButtonClick: MouseEventHandler<HTMLButtonElement> = (e) => {

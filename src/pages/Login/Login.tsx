@@ -62,7 +62,7 @@ function Login({ onLogin }: LoginInterface) {
         </label>
         <p className="login__input-error">{emailError}</p>
         <label className={`login__label${password ? " login__label_has-value" : ""}`} htmlFor="password">
-          <input id="password" type="password" name="password" className="login__input login__password" value={password} onChange={handlePasswordChange} required />
+          <input id="password" type="password" name="password" className="login__input login__password" value={password} onChange={handlePasswordChange} current-password="true" autoComplete="on" required />
           <span className="login__placeholder">Password</span>
         </label>
         <p className="login__input-error">{passwordError}</p>

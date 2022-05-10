@@ -2,9 +2,11 @@ import React, {
   ChangeEventHandler,
   FormEventHandler,
   MouseEventHandler,
+  useContext,
   useEffect,
   useState,
 } from "react";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 import mainApi from "../helpers/mainApi";
 import { CardComponentInterface, PointInterface } from "../interfaces";
 import Point from "./Point";
@@ -12,15 +14,21 @@ import Point from "./Point";
 function Card({
   card: {
     _id, date, points, owner,
-  }, todayCard,
+  }, todayCard, onLoginButtonClick,
 }: CardComponentInterface) {
   const [cardId, setCardId] = useState("");
   const [currentPoints, setPoints] = useState<PointInterface[]>([]);
   const [isNewPoint, setIsNewPoint] = useState(false);
   const [newPointName, setNewPointName] = useState("");
 
+  const { email } = useContext(CurrentUserContext);
+
   const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
+    if (todayCard && !email && onLoginButtonClick) {
+      onLoginButtonClick();
+      return;
+    }
     setIsNewPoint(true);
   };
 
