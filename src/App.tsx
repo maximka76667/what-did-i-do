@@ -13,6 +13,7 @@ function App() {
   const [cards, setCards] = useState<CardInterface[]>([])
 
   function handleError(error: Error) {
+    // eslint-disable-next-line no-console
     console.log(error);
     // handleInfo(false, MESSAGES.defaultError)
   }

@@ -1,7 +1,8 @@
 import React, { MouseEventHandler, useContext } from "react";
 import { Link } from "react-router-dom"
-import CurrentUserContext from "../contexts/CurrentUserContext";
-import { HeaderInterface } from "../interfaces";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { HeaderInterface } from "../../interfaces";
+import "./Header.sass"
 
 function Header({ isLoggedIn, onSignout, onLoginButtonClick }: HeaderInterface) {
   const { email } = useContext(CurrentUserContext);

@@ -1,6 +1,7 @@
 import React from "react"
-import { LoginPopupInterface } from "../interfaces";
-import { Login } from "../pages";
+import { LoginPopupInterface } from "../../interfaces";
+import { Login } from "../../pages";
+import "./LoginPopup.sass"
 
 function LoginPopup({ isOpened, onLogin, isLoggedIn }: LoginPopupInterface) {
   return (

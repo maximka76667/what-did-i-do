@@ -1,5 +1,5 @@
 import React, { MouseEventHandler, useState } from "react";
-import { PointComponentInterface } from "../interfaces";
+import { PointComponentInterface } from "../../interfaces";
 
 function Point({ point: { name, description } }: PointComponentInterface) {
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);

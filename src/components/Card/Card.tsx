@@ -6,10 +6,11 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import CurrentUserContext from "../contexts/CurrentUserContext";
-import mainApi from "../helpers/mainApi";
-import { CardComponentInterface, PointInterface } from "../interfaces";
-import Point from "./Point";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import mainApi from "../../helpers/mainApi";
+import { CardComponentInterface, PointInterface } from "../../interfaces";
+import Point from "../Point/Point";
+import "./Card.sass"
 
 function Card({
   card: {
@@ -29,7 +30,7 @@ function Card({
       onLoginButtonClick();
       return;
     }
-    setIsNewPoint(true);
+    setIsNewPoint(!isNewPoint);
   };
 
   async function updateCard(newPoint: PointInterface) {
@@ -57,11 +58,10 @@ function Card({
         [...currentPoints, newPoint],
       );
     }
-    setIsNewPoint(false);
     setNewPointName("");
   };
 
-  const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     addPoint();
   };
@@ -99,20 +99,20 @@ function Card({
           ))
         }
       </ul>
-      {
-        isNewPoint
-          ? (
-            <form onSubmit={onSubmit}>
-              <input
-                type="text"
-                value={newPointName}
-                onChange={onChangeNewPointName}
-                autoFocus
-              />
-            </form>
-          ) : ""
-      }
-      <button type="submit" className="card__add-button" onClick={handleClick}>+</button>
+      <form className={`add-point ${isNewPoint ? "add-point_visible" : ""}`} onSubmit={handleSubmit}>
+        {/* To do input autofocus on new point */}
+        <input
+          className="add-point__input"
+          type="text"
+          value={newPointName}
+          onChange={onChangeNewPointName}
+        />
+        <div className="add-point__buttons">
+          <button type="submit" disabled={!newPointName} className="card__submit-button">OK</button>
+          <button type="button" className="card__cancel-button" onClick={handleClick}>x</button>
+        </div>
+      </form>
+      <button type="button" className={`card__add-button ${isNewPoint ? "card__add-button_hidden" : ""}`} onClick={handleClick}><span>+</span></button>
     </div>
   );
 }

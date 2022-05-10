@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import Card from "./Card";
-import { MainInterface } from "../interfaces";
-import CurrentUserContext from "../contexts/CurrentUserContext";
+import Card from "../Card/Card";
+import { MainInterface } from "../../interfaces";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import "./Main.sass"
 
 function Main({ cards, onLoginButtonClick }: MainInterface) {
   const { name } = useContext(CurrentUserContext);
