@@ -88,7 +88,7 @@ function Card({
           )
           : ""
       }
-      <button type="button" className={`card__add-button ${isNewPoint ? "card__add-button_hidden" : ""}`} onClick={handleClick}><span>+</span></button>
+      <button type="button" className={`card__add-button ${isNewPoint ? "card__add-button_hidden" : ""}`} onClick={handleClick}>+</button>
     </div>
   );
 }

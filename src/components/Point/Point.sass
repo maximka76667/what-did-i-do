@@ -1,5 +1,12 @@
-.point_described:after
-  content: ">"
+.point
+  background-color: transparent
+  border: 0
+
+  &__name
+    font-weight: normal
+
+  &_described:after
+    content: ">"
 
 .point_described.point_opened:after
   content: "<"
