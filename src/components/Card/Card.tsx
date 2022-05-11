@@ -1,6 +1,4 @@
 import React, {
-  ChangeEventHandler,
-  FormEventHandler,
   MouseEventHandler,
   useContext,
   useEffect,
@@ -11,6 +9,7 @@ import mainApi from "../../utils/mainApi";
 import { CardComponentInterface, PointInterface } from "../../interfaces";
 import Point from "../Point/Point";
 import "./Card.sass"
+import AddPoint from "../AddPoint/AddPoint";
 
 function Card({
   card: {
@@ -21,7 +20,6 @@ function Card({
   const [cardId, setCardId] = useState("");
   const [currentPoints, setPoints] = useState<PointInterface[]>([]);
   const [isNewPoint, setIsNewPoint] = useState(false);
-  const [newPointName, setNewPointName] = useState("");
 
   const { email } = useContext(CurrentUserContext);
 
@@ -49,34 +47,13 @@ function Card({
     mainApi.updateCard(id, newPoint);
   }
 
-  const addPoint = () => {
-    const newPoint = {
-      name: newPointName,
-    }
+  const addCardPoint = (newPoint: PointInterface) => {
     updateCard(newPoint);
-    if (currentPoints && newPointName) {
+    if (currentPoints && newPoint) {
       setPoints(
         [...currentPoints, newPoint],
       );
     }
-    setNewPointName("");
-  };
-
-  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
-    addPoint();
-  };
-
-  // Fix double submiting form's onSubmit and input's onBlur
-  // Delete or leave submit on blur?
-  // const onBlur: FocusEventHandler<HTMLInputElement> = (e) => {
-  //   e.preventDefault();
-  //   addPoint();
-  //   // onSubmit(e as any);
-  // };
-
-  const onChangeNewPointName: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setNewPointName(e.target.value);
   };
 
   useEffect(() => {
@@ -100,19 +77,17 @@ function Card({
           ))
         }
       </ul>
-      <form className={`add-point ${isNewPoint ? "add-point_visible" : ""}`} onSubmit={handleSubmit}>
-        {/* To do input autofocus on new point */}
-        <input
-          className="add-point__input"
-          type="text"
-          value={newPointName}
-          onChange={onChangeNewPointName}
-        />
-        <div className="add-point__buttons">
-          <button type="submit" disabled={!newPointName} className="card__submit-button">OK</button>
-          <button type="button" className="card__cancel-button" onClick={handleClick}>x</button>
-        </div>
-      </form>
+      {
+        isNewPoint
+          ? (
+            <AddPoint
+              isNewPoint={isNewPoint}
+              addCardPoint={addCardPoint}
+              handleClick={handleClick}
+            />
+          )
+          : ""
+      }
       <button type="button" className={`card__add-button ${isNewPoint ? "card__add-button_hidden" : ""}`} onClick={handleClick}><span>+</span></button>
     </div>
   );
