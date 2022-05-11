@@ -9,7 +9,9 @@ function Point({
     _id,
     name,
     // description,
-  }, onUpdatePoint,
+  },
+  onUpdatePoint,
+  onDeletePoint,
 }: PointComponentInterface) {
   // const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
   const [pointName, setPointName] = useState(name);
@@ -26,7 +28,11 @@ function Point({
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    await onUpdatePoint(_id, newName);
+    if (!newName) {
+      await onDeletePoint(_id);
+    } else {
+      await onUpdatePoint(_id, newName);
+    }
     setIsEditing(false);
     setPointName(newName);
   }

@@ -92,7 +92,17 @@ class Api {
     })
   }
 
-  removeCard(cardId: string) {
+  deletePoint(cardId: string, pointId: string) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/points/${pointId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: this._token,
+        "Content-Type": "application/json",
+      },
+    })
+  }
+
+  deleteCard(cardId: string) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: {

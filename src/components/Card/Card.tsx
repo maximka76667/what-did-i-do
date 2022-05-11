@@ -52,6 +52,10 @@ function Card({
     await mainApi.updatePoint(cardId, pointId, newName);
   }
 
+  async function onDeletePoint(pointId: string) {
+    await mainApi.deletePoint(cardId, pointId);
+  }
+
   const addCardPoint = async (newPoint: Omit<PointInterface, "_id">) => {
     const { newPoint: point } = await addPoint(newPoint);
     if (currentPoints && newPoint) {
@@ -79,6 +83,7 @@ function Card({
               <Point
                 point={point}
                 onUpdatePoint={onUpdatePoint}
+                onDeletePoint={onDeletePoint}
               />
             </li>
           ))
