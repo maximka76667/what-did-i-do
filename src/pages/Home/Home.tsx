@@ -14,12 +14,17 @@ function Home({
     setIsLoginPopupOpened(!isLoginPopupOpened);
   }
 
+  function closeLoginPopup() {
+    setIsLoginPopupOpened(false);
+  }
+
   return (
     <>
       <Header
         onSignout={onSignout}
-        onLoginButtonClick={changeLoginPopupVisibility}
+        changeLoginPopupVisibility={changeLoginPopupVisibility}
         isLoggedIn={isLoggedIn}
+        closeLoginPopup={closeLoginPopup}
       />
       <Main cards={cards} changeLoginPopupVisibility={changeLoginPopupVisibility} />
       <Footer />

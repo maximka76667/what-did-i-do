@@ -24,7 +24,18 @@ function Main({ cards, changeLoginPopupVisibility }: MainInterface) {
       <p className="content__subheading">Would you like to share with me your achievements today?</p>
       <div className="content__container">
         {
-          cards.filter((card) => card.date === todayCard.date).length > 0 ? "" : <Card card={todayCard} key={todayCard.date} todayCard onLoginButtonClick={changeLoginPopupVisibility} />
+          cards.filter(
+            (card) => card.date === todayCard.date,
+          ).length > 0
+            ? ""
+            : (
+              <Card
+                card={todayCard}
+                key={todayCard.date}
+                todayCard
+                onLoginButtonClick={changeLoginPopupVisibility}
+              />
+            )
         }
         {
           cards.map((card) => (

@@ -4,20 +4,22 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { HeaderInterface } from "../../interfaces";
 import "./Header.sass"
 
-function Header({ isLoggedIn, onSignout, onLoginButtonClick }: HeaderInterface) {
+function Header({
+  isLoggedIn, onSignout, changeLoginPopupVisibility, closeLoginPopup,
+}: HeaderInterface) {
   const { email } = useContext(CurrentUserContext);
 
   const handleSignout: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
 
+    closeLoginPopup();
     onSignout();
-    onLoginButtonClick();
   }
 
   const handleLoginButtonClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
 
-    onLoginButtonClick();
+    changeLoginPopupVisibility();
   }
 
   return (
