@@ -6,6 +6,7 @@ import "./Point.sass"
 
 function Point({ point: { _id, name, description }, onUpdatePoint }: PointComponentInterface) {
   // const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
+  const [pointName, setPointName] = useState(name);
   const [isEditing, setIsEditing] = useState(false);
   const [newName, setNewName] = useState(name);
   const [pointId, setPointId] = useState(_id);
@@ -18,13 +19,11 @@ function Point({ point: { _id, name, description }, onUpdatePoint }: PointCompon
     setNewName(e.target.value);
   }
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    // To do point name changing
-    console.log(newName);
     setIsEditing(false);
-    // onSubmit();
-    // onSubmit();
+    await onUpdatePoint(pointId, newName);
+    setPointName(newName);
   }
 
   return (
@@ -52,7 +51,7 @@ function Point({ point: { _id, name, description }, onUpdatePoint }: PointCompon
         !isEditing
           ? (
             <div className="point" onDoubleClick={handleDoubleClick}>
-              <h3 className="point__name">{name}</h3>
+              <h3 className="point__name">{pointName}</h3>
             </div>
           ) : (
             <form className="point-form" onSubmit={handleSubmit}>
