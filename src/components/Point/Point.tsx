@@ -1,15 +1,20 @@
 import React, {
-  ChangeEventHandler, FormEventHandler, MouseEventHandler, useEffect, useState,
+  ChangeEventHandler, FormEventHandler, MouseEventHandler, useState,
 } from "react";
 import { PointComponentInterface } from "../../interfaces";
 import "./Point.sass"
 
-function Point({ point: { _id, name, description }, onUpdatePoint }: PointComponentInterface) {
+function Point({
+  point: {
+    _id,
+    name,
+    // description,
+  }, onUpdatePoint,
+}: PointComponentInterface) {
   // const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
   const [pointName, setPointName] = useState(name);
   const [isEditing, setIsEditing] = useState(false);
   const [newName, setNewName] = useState(name);
-  const [pointId, setPointId] = useState(_id);
 
   const handleDoubleClick: MouseEventHandler<HTMLDivElement> = () => {
     setIsEditing(true);
@@ -21,8 +26,8 @@ function Point({ point: { _id, name, description }, onUpdatePoint }: PointCompon
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
+    await onUpdatePoint(_id, newName);
     setIsEditing(false);
-    await onUpdatePoint(pointId, newName);
     setPointName(newName);
   }
 

@@ -11,14 +11,12 @@ function Header({
 
   const handleSignout: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
-
     closeLoginPopup();
     onSignout();
   }
 
   const handleLoginButtonClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
-
     changeLoginPopupVisibility();
   }
 

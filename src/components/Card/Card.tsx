@@ -49,8 +49,7 @@ function Card({
   }
 
   async function onUpdatePoint(pointId: string, newName: string) {
-    const card = await mainApi.updatePoint(cardId, pointId, newName);
-    console.log(card);
+    await mainApi.updatePoint(cardId, pointId, newName);
   }
 
   const addCardPoint = async (newPoint: Omit<PointInterface, "_id">) => {
