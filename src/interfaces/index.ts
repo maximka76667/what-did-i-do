@@ -10,3 +10,4 @@ export type { default as PointComponentInterface } from "./PointComponentInterfa
 export type { default as HomeInterface } from "./HomeInterface"
 export type { default as LoginInterface } from "./LoginInterface"
 export type { default as LoginFormInterface } from "./LoginFormInterface"
+export type { default as AddPointInterface } from "./AddPointInterface"

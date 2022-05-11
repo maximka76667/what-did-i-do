@@ -1,13 +1,9 @@
 import React, {
-  ChangeEventHandler, FormEventHandler, MouseEventHandler, useState,
+  ChangeEventHandler, FormEventHandler, useState,
 } from "react"
-import { PointInterface } from "../../interfaces";
+import { AddPointInterface } from "../../interfaces";
 
-function AddPoint({ isNewPoint, addCardPoint, handleClick }: {
-  isNewPoint: boolean,
-  addCardPoint: (point: PointInterface) => void,
-  handleClick: MouseEventHandler<HTMLButtonElement>
-}) {
+function AddPoint({ isNewPoint, addCardPoint, handleClick }: AddPointInterface) {
   const [newPointName, setNewPointName] = useState("");
 
   const addPoint = () => {
