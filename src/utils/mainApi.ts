@@ -65,7 +65,7 @@ class Api {
       .then(Api._checkResponse);
   }
 
-  updateCard(cardId: string, point: PointInterface) {
+  addPoint(cardId: string, point: Omit<PointInterface, "_id">) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "PATCH",
       headers: {
@@ -77,6 +77,19 @@ class Api {
       }),
     })
       .then(Api._checkResponse);
+  }
+
+  updatePoint(cardId: string, pointId: string, newName: string) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/points/${pointId}`, {
+      method: "PATCH",
+      headers: {
+        authorization: this._token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        newName,
+      }),
+    })
   }
 
   removeCard(cardId: string) {

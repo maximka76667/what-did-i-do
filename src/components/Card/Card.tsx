@@ -32,7 +32,7 @@ function Card({
     setIsNewPoint(!isNewPoint);
   };
 
-  async function updateCard(newPoint: PointInterface) {
+  async function addPoint(newPoint: Omit<PointInterface, "_id">) {
     // Problem: user creates new today card on every point adding
     // Fix: remove this card and create another one with server data
     let id = cardId;
@@ -44,14 +44,20 @@ function Card({
       id = newCard._id;
       setCardId(id);
     }
-    mainApi.updateCard(id, newPoint);
+    const point = await mainApi.addPoint(id, newPoint);
+    return point;
   }
 
-  const addCardPoint = (newPoint: PointInterface) => {
-    updateCard(newPoint);
+  const onUpdatePoint = async (pointId: string, newName: string) => {
+    const card = await mainApi.updatePoint(cardId, pointId, newName);
+    console.log(card);
+  }
+
+  const addCardPoint = async (newPoint: Omit<PointInterface, "_id">) => {
+    const { newPoint: point } = await addPoint(newPoint);
     if (currentPoints && newPoint) {
       setPoints(
-        [...currentPoints, newPoint],
+        [...currentPoints, point],
       );
     }
   };
@@ -69,10 +75,12 @@ function Card({
       <p>{owner}</p> */}
       <ul className="card__points">
         {
-          currentPoints && currentPoints.map((point, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <li className="card__points-item" key={index}>
-              <Point point={point} />
+          currentPoints && currentPoints.map((point) => (
+            <li className="card__points-item" key={point._id}>
+              <Point
+                point={point}
+                onUpdatePoint={onUpdatePoint}
+              />
             </li>
           ))
         }

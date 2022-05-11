@@ -3,6 +3,6 @@ import PointInterface from "./PointInterface";
 
 export default interface AddPointInterface {
   isNewPoint: boolean,
-  addCardPoint: (point: PointInterface) => void,
+  addCardPoint: (point: Omit<PointInterface, "_id">) => void,
   handleClick: MouseEventHandler<HTMLButtonElement>
 }
