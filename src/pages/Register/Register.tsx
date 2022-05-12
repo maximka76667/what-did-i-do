@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from "react"
+import React from "react"
 import { Link } from "react-router-dom";
 import validator from "validator";
 import { useForm, SubmitHandler } from "react-hook-form"
