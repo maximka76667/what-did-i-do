@@ -6,7 +6,10 @@ import { LoginForm } from "../../components";
 function Login({ onLogin }: LoginInterface) {
   return (
     <div className="login">
-      <LoginForm onLogin={onLogin} />
+      <div className="login__container">
+        <LoginForm onLogin={onLogin} />
+
+      </div>
     </div>
   )
 }

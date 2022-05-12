@@ -1,4 +1,5 @@
 import React, { ChangeEventHandler, FormEventHandler, useState } from "react"
+import { Link } from "react-router-dom";
 import validator from "validator";
 import { LoginFormInterface, UserInterface } from "../../interfaces";
 import "./LoginForm.sass"
@@ -65,6 +66,9 @@ function LoginForm({ onLogin }: LoginFormInterface) {
         <span className="login-form__placeholder">Password</span>
       </label>
       <p className="login-form__input-error">{passwordError}</p>
+      <div className="login-form__register">
+        <Link className="login-form__register-link" to="/signup">I don&apos;t have an account</Link>
+      </div>
       <div className="login-form__submit">
         <label className="login-form__submit-label">
           <input type="checkbox" name="isSavedSession" id="isSavedSession" />

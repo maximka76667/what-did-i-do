@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.sass";
+import { useNavigate } from "react-router";
 import CurrentUserContext from "./contexts/CurrentUserContext";
 import auth from "./utils/auth";
 import mainApi from "./utils/mainApi";
 import { CardInterface, UserFunction, UserInterface } from "./interfaces";
-import { Home, Login, Signup } from "./pages";
+import { Home, Login, Register } from "./pages";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState<UserInterface>({ email: "", name: "" });
+  const [currentUser, setCurrentUser] = useState<Omit<UserInterface, "password">>({ email: "", name: "" });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [cards, setCards] = useState<CardInterface[]>([])
 
-  function handleError(error: Error) {
+  const navigate = useNavigate();
+
+  function handleError(error: any) {
     // eslint-disable-next-line no-console
     console.log(error);
     // handleInfo(false, MESSAGES.defaultError)
@@ -30,6 +33,7 @@ function App() {
         // if (requestedPathname === "/signin" ||
         // requestedPathname === "/signup") props.history.push("/movies")
         // else props.history.push(requestedPathname);
+        navigate("/");
         mainApi.getCards()
           .then(({ cards: serverCards }: { cards: CardInterface[] }) => {
             const currentUserCards = serverCards.filter((card) => card.owner === res.user._id);
@@ -40,13 +44,20 @@ function App() {
   }
 
   // Login
-  const handleLogin: UserFunction = ({ email, password }) => {
-    auth.login({ email, password } as UserInterface)
-      .then((data) => {
-        if (data.token) handleAuth(data.token);
-        // handleInfo(true, MESSAGES.auth);
-      })
-      .catch((err) => handleError(err))
+  const handleLogin: UserFunction = async (userData) => {
+    try {
+      const data = await auth.login(userData)
+      if (data.token) handleAuth(data.token);
+    } catch (err) {
+      handleError(err)
+    }
+    // handleInfo(true, MESSAGES.auth);
+  }
+
+  const handleRegister = async (userData: UserInterface) => {
+    await auth.register(userData);
+    // props.history.push("/signin");
+    navigate("/");
   }
 
   function handleSignout() {
@@ -62,6 +73,7 @@ function App() {
           // localStorage.removeItem('movies');
           // props.history.push('/');
           // handleInfo(true, MESSAGES.logout);
+          navigate("/");
         })
         .catch((err) => handleError(err));
     }
@@ -81,23 +93,21 @@ function App() {
   return (
     <div className="app">
       <CurrentUserContext.Provider value={currentUser}>
-        <Router>
-          <Routes>
-            <Route
-              index
-              element={(
-                <Home
-                  onSignout={handleSignout}
-                  isLoggedIn={isLoggedIn}
-                  cards={cards}
-                  onLogin={handleLogin}
-                />
-              )}
-            />
-            <Route path="/signin" element={<Login onLogin={handleLogin} />} />
-            <Route path="/signup" element={<Signup />} />
-          </Routes>
-        </Router>
+        <Routes>
+          <Route
+            index
+            element={(
+              <Home
+                onSignout={handleSignout}
+                isLoggedIn={isLoggedIn}
+                cards={cards}
+                onLogin={handleLogin}
+              />
+            )}
+          />
+          <Route path="/signin" element={<Login onLogin={handleLogin} />} />
+          <Route path="/signup" element={<Register onRegister={handleRegister} />} />
+        </Routes>
       </CurrentUserContext.Provider>
     </div>
   );
