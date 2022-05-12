@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.sass";
 import { useNavigate } from "react-router";
 import CurrentUserContext from "./contexts/CurrentUserContext";
@@ -8,6 +8,10 @@ import mainApi from "./utils/mainApi";
 import { CardInterface, UserFunction, UserInterface } from "./interfaces";
 import { Home, Login, Register } from "./pages";
 
+// To do
+// rewrite all promises to async/await
+// Fix interfaces
+
 function App() {
   const [currentUser, setCurrentUser] = useState<Omit<UserInterface, "password">>({ email: "", name: "" });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -15,7 +19,7 @@ function App() {
 
   const navigate = useNavigate();
 
-  function handleError(error: any) {
+  function handleError(error: unknown) {
     // eslint-disable-next-line no-console
     console.log(error);
     // handleInfo(false, MESSAGES.defaultError)
