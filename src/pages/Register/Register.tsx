@@ -1,5 +1,4 @@
 import React from "react"
-import validator from "validator";
 import { RegisterInterface } from "../../interfaces";
 import "./Register.sass"
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
