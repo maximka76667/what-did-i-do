@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { KeyboardEventHandler, useState } from "react";
 import {
   Header, Footer, LoginPopup, Main,
 } from "../../components";
@@ -18,8 +18,21 @@ function Home({
     setIsLoginPopupOpened(false);
   }
 
+  const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {
+    if (e.code === "Escape") {
+      e.preventDefault();
+      closeLoginPopup();
+    }
+  }
+
   return (
-    <>
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <div
+      className="home"
+      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+    >
       <Header
         onSignout={onSignout}
         changeLoginPopupVisibility={changeLoginPopupVisibility}
@@ -31,10 +44,10 @@ function Home({
       <LoginPopup
         isLoggedIn={isLoggedIn}
         onLogin={onLogin}
-        changeLoginPopupVisibility={changeLoginPopupVisibility}
+        closeLoginPopup={closeLoginPopup}
         isOpened={isLoginPopupOpened}
       />
-    </>
+    </div>
   );
 }
 

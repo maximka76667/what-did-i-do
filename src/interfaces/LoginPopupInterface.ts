@@ -4,5 +4,5 @@ export default interface LoginPopupInterface {
   isOpened: boolean,
   onLogin: UserFunction,
   isLoggedIn: boolean,
-  changeLoginPopupVisibility: () => void
+  closeLoginPopup: () => void
 }

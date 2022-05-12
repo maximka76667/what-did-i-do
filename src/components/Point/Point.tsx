@@ -28,13 +28,22 @@ function Point({
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    if (!newName) {
-      await onDeletePoint(_id);
-    } else {
-      await onUpdatePoint(_id, newName);
-    }
     setIsEditing(false);
     setPointName(newName);
+
+    // If user submits the same name - do nothing
+    if (newName === pointName) {
+      return;
+    }
+
+    // If there is no new name - delete point
+    if (!newName) {
+      await onDeletePoint(_id);
+      return;
+    }
+
+    // In general case update the point name
+    await onUpdatePoint(_id, newName);
   }
 
   return (

@@ -4,12 +4,20 @@ import LoginForm from "../LoginForm/LoginForm";
 import "./LoginPopup.sass"
 
 function LoginPopup({
-  isOpened, onLogin, isLoggedIn, changeLoginPopupVisibility,
+  isOpened, onLogin, isLoggedIn, closeLoginPopup,
 }: LoginPopupInterface) {
   return (
-    <div className={`login-popup ${!isLoggedIn && isOpened ? "login-popup_opened" : ""}`}>
-      <LoginForm onLogin={onLogin} />
-      <button className="login-popup__close-button" type="button" onClick={changeLoginPopupVisibility}>x</button>
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <div
+      className={`login-popup ${!isLoggedIn && isOpened ? "login-popup_opened" : ""}`}
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+    >
+      {/* eslint-disable-next-line */}
+      < div className="login-popup__overlay" onClick={closeLoginPopup} > </div >
+      <div className="login-popup__container">
+        <LoginForm onLogin={onLogin} />
+        <button className="login-popup__close-button" type="button" onClick={closeLoginPopup}>x</button>
+      </div>
     </div>
   )
 }
