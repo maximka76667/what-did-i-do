@@ -1,4 +1,4 @@
-import React from "react"
+import React, { ChangeEventHandler } from "react"
 import { Link } from "react-router-dom";
 import validator from "validator";
 import { useForm, SubmitHandler } from "react-hook-form"
@@ -19,6 +19,7 @@ function Register({ onRegister }: RegisterInterface) {
         <h1 className="register-form__heading">Register</h1>
         <Input
           label="email"
+          type="email"
           watch={watch}
           setValue={setValue}
           register={register}
@@ -26,6 +27,7 @@ function Register({ onRegister }: RegisterInterface) {
         />
         <Input
           label="name"
+          type="text"
           watch={watch}
           setValue={setValue}
           register={register}
@@ -33,6 +35,7 @@ function Register({ onRegister }: RegisterInterface) {
         />
         <Input
           label="password"
+          type="password"
           watch={watch}
           setValue={setValue}
           register={register}
