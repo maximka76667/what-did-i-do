@@ -1,10 +1,13 @@
 import { ErrorMessage } from "@hookform/error-message"
 import React, { ChangeEventHandler } from "react"
+import { useFormContext } from "react-hook-form";
 import capitalize from "../../helpers/capitalize";
+import { InputInterface } from "../../interfaces";
 
-function Input({
-  label, watch, setValue, register, errors, type,
-}: any) {
+function Input({ label, type }: InputInterface) {
+  const {
+    watch, setValue, register, formState: { errors },
+  } = useFormContext();
   const value = watch(label);
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {

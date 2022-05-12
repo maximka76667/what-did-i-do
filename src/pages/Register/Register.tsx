@@ -1,51 +1,13 @@
 import React from "react"
-import { Link } from "react-router-dom";
 import validator from "validator";
-import { useForm, SubmitHandler } from "react-hook-form"
-import { RegisterInterface, UserInterface } from "../../interfaces";
+import { RegisterInterface } from "../../interfaces";
 import "./Register.sass"
-import Input from "../../components/Input/Input";
+import RegisterForm from "../../components/RegisterForm/RegisterForm";
 
 function Register({ onRegister }: RegisterInterface) {
-  const {
-    register, handleSubmit, formState: { errors }, setValue, watch,
-  } = useForm<UserInterface>();
-
-  const onSubmit: SubmitHandler<UserInterface> = ((data) => onRegister(data));
-
   return (
     <div className="register">
-      <form className="register-form" noValidate onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="register-form__heading">Register</h1>
-        <Input
-          label="email"
-          type="email"
-          watch={watch}
-          setValue={setValue}
-          register={register}
-          errors={errors}
-        />
-        <Input
-          label="name"
-          type="text"
-          watch={watch}
-          setValue={setValue}
-          register={register}
-          errors={errors}
-        />
-        <Input
-          label="password"
-          type="password"
-          watch={watch}
-          setValue={setValue}
-          register={register}
-          errors={errors}
-        />
-        <div className="register-form__submit">
-          <Link to="/signin" className="register-form__login">Already has an account?</Link>
-          <button type="submit" className="register-form__submit-button">Please, create me user</button>
-        </div>
-      </form>
+      <RegisterForm onRegister={onRegister} />
     </div>
   )
 }
