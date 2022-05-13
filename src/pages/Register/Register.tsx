@@ -1,7 +1,7 @@
 import React from "react"
 import { RegisterInterface } from "../../interfaces";
 import "./Register.sass"
-import RegisterForm from "../../components/RegisterForm/RegisterForm";
+import { RegisterForm } from "../../components";
 
 function Register({ onRegister }: RegisterInterface) {
   return (
