@@ -10,7 +10,8 @@
   &__email
     margin-right: 1em
 
-  &__signout
+  &__signout,
+  &__login
     outline: 0
     border: 0
     width: 100px
@@ -23,3 +24,9 @@
       transform: translateY(-5px)
       box-shadow: 0 0 0 2px #000
       background-color: #fff
+
+  &__signup
+    transition: all 0.2s cubic-bezier(0, 1, 1, 1)
+    color: #000
+    &:hover
+      color: #aaf
