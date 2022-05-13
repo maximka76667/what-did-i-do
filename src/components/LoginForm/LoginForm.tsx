@@ -53,6 +53,7 @@ function LoginForm({ onLogin }: LoginFormInterface) {
     onLogin({ email, password } as UserInterface);
   }
 
+  // Rewrite form with react-form-hook
   return (
     <form className="login-form" noValidate onSubmit={handleLogin}>
       <h1 className="login-form__heading">Login</h1>

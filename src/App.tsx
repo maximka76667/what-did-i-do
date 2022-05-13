@@ -10,7 +10,6 @@ import { Home, Login, Register } from "./pages";
 
 // To do
 // rewrite all promises to async/await
-// Fix interfaces
 
 function App() {
   const [currentUser, setCurrentUser] = useState<Omit<UserInterface, "password">>({ email: "", name: "" });
@@ -60,7 +59,6 @@ function App() {
 
   const handleRegister = async (userData: UserInterface) => {
     await auth.register(userData);
-    // props.history.push("/signin");
     navigate("/");
   }
 
@@ -75,7 +73,6 @@ function App() {
           localStorage.removeItem("token");
           setCards([]);
           // localStorage.removeItem('movies');
-          // props.history.push('/');
           // handleInfo(true, MESSAGES.logout);
           navigate("/");
         })

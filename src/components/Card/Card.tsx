@@ -23,6 +23,8 @@ function Card({
 
   const { email } = useContext(CurrentUserContext);
 
+  // Todo responsive layout
+
   const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
     if (todayCard && !email && onLoginButtonClick) {
