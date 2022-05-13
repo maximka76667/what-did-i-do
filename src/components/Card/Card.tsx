@@ -36,7 +36,7 @@ function Card({
     // Problem: user creates new today card on every point adding
     // Fix: remove this card and create another one with server data
     let id = cardId;
-    if (todayCard) {
+    if (todayCard && cardId === "0") {
       const newCard = await mainApi.addCard({
         date,
         points: [],

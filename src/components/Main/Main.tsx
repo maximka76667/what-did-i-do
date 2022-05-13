@@ -11,7 +11,7 @@ function Main({ cards, changeLoginPopupVisibility }: MainInterface) {
   const todayCard = {
     _id: "0",
     points: [],
-    date: `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`,
+    date: `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`,
   };
 
   return (
