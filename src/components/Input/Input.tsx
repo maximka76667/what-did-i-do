@@ -20,13 +20,13 @@ function Input({ label, type }: InputInterface) {
     <>
       {/* To do components  */}
       <label
-        className={`register-form__label ${value ? "register-form__label_has-value" : ""}`}
+        className={`auth-form__label ${value ? "auth-form__label_has-value" : ""}`}
         htmlFor={label}
       >
         <input
           id={label}
           type={type}
-          className={`register-form__input register-form__${label}`}
+          className={`auth-form__input auth-form__${label}`}
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...register(label, {
             required: "This is required.",
@@ -34,9 +34,9 @@ function Input({ label, type }: InputInterface) {
           autoComplete="on"
           onChange={handleInputChange}
         />
-        <span className="register-form__placeholder">{capitalize(label)}</span>
+        <span className="auth-form__placeholder">{capitalize(label)}</span>
       </label>
-      <p className="register-form__input-error">
+      <p className="auth-form__input-error">
         <ErrorMessage errors={errors} name={label} />
       </p>
     </>

@@ -12,7 +12,6 @@ function AuthForm({ onFormSubmit, heading, children }: AuthFormInterface) {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <FormProvider {...useFormMethods}>
-      {/* Todo common form component for register and login */}
       <form className="auth-form" noValidate onSubmit={handleSubmit(onSubmit)}>
         <h1 className="auth-form__heading">{heading}</h1>
         {/* Todo array.map to render inputs */}

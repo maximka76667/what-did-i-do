@@ -10,8 +10,8 @@ function LoginForm({ onLogin }: LoginFormInterface) {
     <AuthForm onFormSubmit={onLogin} heading="Login">
       <Input label="email" type="email" />
       <Input label="password" type="password" />
-      <div className="login-form__register">
-        <Link className="login-form__register-link" to="/signup">I don&apos;t have an account</Link>
+      <div className="auth-form__register">
+        <Link className="auth-form__register-link" to="/signup">I don&apos;t have an account</Link>
       </div>
       <div className="auth-form__submit">
         <label className="auth-form__submit-label">
