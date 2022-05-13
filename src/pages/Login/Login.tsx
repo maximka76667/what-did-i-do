@@ -8,7 +8,6 @@ function Login({ onLogin }: LoginInterface) {
     <div className="login">
       <div className="login__container">
         <LoginForm onLogin={onLogin} />
-
       </div>
     </div>
   )
