@@ -7,13 +7,9 @@ function LoginPopup({
   isOpened, onLogin, isLoggedIn, closeLoginPopup,
 }: LoginPopupInterface) {
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-    <div
-      className={`login-popup ${!isLoggedIn && isOpened ? "login-popup_opened" : ""}`}
-    // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-    >
+    <div className={`login-popup ${!isLoggedIn && isOpened ? "login-popup_opened" : ""}`}>
       {/* eslint-disable-next-line */}
-      < div className="login-popup__overlay" onClick={closeLoginPopup} > </div >
+      <div className="login-popup__overlay" onClick={closeLoginPopup}> </div>
       <div className="login-popup__container">
         <LoginForm onLogin={onLogin} />
         <button className="login-popup__close-button" type="button" onClick={closeLoginPopup}>x</button>
