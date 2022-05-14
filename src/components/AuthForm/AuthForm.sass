@@ -1,6 +1,9 @@
+@import "../../sass/variables"
+
 .auth-form
-  background: #fff
-  border: 2px solid #eee
+  background: $black
+  box-shadow: 0 0 0 2px $white
+  color: $white
   display: flex
   flex-direction: column
   padding: 40px 60px
@@ -18,27 +21,28 @@
     &_has-value .auth-form__placeholder
       top: -10px
       font-size: 12px
-      color: #000
+      color: $white
 
   &__input
     width: 100%
-    background-color: transparent
+    background-color: $black
     border: 1px solid transparent
-    border-bottom: 1px solid #000
+    border-bottom: 1px solid $orange
     font-size: 20px
     line-height: 1.5
     outline: 0
     transition: all 0.2s
     padding: 2px 10px
+    color: inherit
 
     &:focus
       border-radius: 5px
-      border-color: #aaaaff
+      border-color: $purple
 
   &__input:focus + &__placeholder
     top: -10px
     font-size: 12px
-    color: #000
+    color: $white
 
   &__placeholder
     position: absolute
@@ -48,7 +52,7 @@
     transform: translateY(-50%)
     cursor: text
     padding: 0 5px
-    color: #aaa
+    color: $light-grey
 
   &__input-error
     margin-bottom: 30px
@@ -72,29 +76,29 @@
       width: 200px
       min-height: 40px
       border: 0
-      background-color: #fff
+      background-color: $white
       outline: 0
       border-radius: 5px
       transition: all 0.2s cubic-bezier(0, 1, 1, 1)
-      background-color: #aaaaff
-      color: #fff
+      background-color: $purple
+      color: $white
 
       &:hover
-        box-shadow: 0 0 0 3px #000
-        transform: translateY(-5px) scale(1.05)
+        box-shadow: 0 0 0 3px $white
+        transform: translateY(-5px)
 
   &__login
     transition: all 0.2s cubic-bezier(0, 1, 1, 1)
-    color: #000
+    color: $white
     margin-right: 20px
     &:hover
-      color: #aaf
+      color: $purple
 
   &__register
     width: 100%
     margin: 0 0 15px
     &-link
       transition: all 0.2s cubic-bezier(0, 1, 1, 1)
-      color: #000
+      color: $white
       &:hover
-        color: #aaf
+        color: $purple

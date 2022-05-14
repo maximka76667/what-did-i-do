@@ -6,17 +6,19 @@
   align-items: center
   justify-content: flex-end
   padding: 1.2em 2em
-  background-color: #f7f7f7
   position: fixed
   width: 100%
   top: 0
+  background-color: $black
+  color: $white
+  border-radius: 0 0 10px 10px
 
   @include md
     font-size: 0.8em
 
   &__login,
   &__email
-    margin-right: 1em
+    margin-right: 2em
 
   &__signout,
   &__login
@@ -26,15 +28,16 @@
     padding: 5px
     border-radius: 15px
     transition: all 0.2s cubic-bezier(0, 1, 1, 1)
-    background-color: #aaaaff
+    background-color: $orange
+    color: $white
 
     &:hover
       transform: translateY(-5px)
-      box-shadow: 0 0 0 2px #000
-      background-color: #fff
+      box-shadow: 0 0 0 2px $white
+      background-color: $light-blue
 
   &__signup
     transition: all 0.2s cubic-bezier(0, 1, 1, 1)
-    color: #000
+    color: $white
     &:hover
-      color: #aaf
+      color: $light-blue
