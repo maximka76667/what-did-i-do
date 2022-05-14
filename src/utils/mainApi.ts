@@ -118,7 +118,7 @@ class Api {
 }
 
 const mainApi = new Api({
-  baseUrl: "http://localhost:3001",
+  baseUrl: "https://sleepy-journey-36086.herokuapp.com",
 })
 
 export default mainApi;
