@@ -2,6 +2,7 @@ import React, {
   ChangeEventHandler, FormEventHandler, useState,
 } from "react"
 import { AddPointInterface } from "../../interfaces";
+import "./AddPoint.sass"
 
 function AddPoint({ isNewPoint, addCardPoint, handleClick }: AddPointInterface) {
   const [newPointName, setNewPointName] = useState("");

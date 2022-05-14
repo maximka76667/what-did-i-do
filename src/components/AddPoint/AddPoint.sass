@@ -8,3 +8,34 @@
     visibility: visible
     opacity: 1
     height: 20px
+
+  &__input
+    width: 100%
+    background-color: transparent
+
+  &__buttons
+    display: flex
+    justify-content: flex-end
+
+  &__submit-button
+    width: 20%
+    background-color: #aaf
+    outline: 0
+    border: 0
+    border-radius: 5px 0 0 5px
+    transition: all 0.2s cubic-bezier(0, 1, 1, 1)
+
+    &:hover
+      opacity: 0.7
+
+  &__cancel-button
+    background-color: #aaf
+    width: 20%
+    outline: 0
+    border: 0
+    border-radius: 0 5px 5px 0
+    margin-right: 1em
+    transition: all 0.2s cubic-bezier(0, 1, 1, 1)
+
+    &:hover
+      opacity: 0.7
