@@ -1,3 +1,5 @@
+@import "../../sass/mixins"
+
 .point
   background-color: transparent
   border: 0
@@ -5,8 +7,16 @@
   &__name
     font-weight: normal
 
-  &_described:after
-    content: ">"
+  &-form
+    &__input
+      width: 100%
+      border: 0
+      outline: 0
+      box-sizing: border-box
+      box-shadow: 0 0 0 1px $black, 0 0 0 2px $white
 
-.point_described.point_opened:after
-  content: "<"
+//   &_described:after
+//     content: ">"
+
+// .point_described.point_opened:after
+//   content: "<"

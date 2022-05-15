@@ -13,13 +13,18 @@
 
   &__input
     width: 100%
-    background-color: transparent
+    border: 0
+    outline: 0
+    box-sizing: border-box
+    box-shadow: 0 0 0 1px $black, 0 0 0 2px $white
 
   &__buttons
     display: flex
     justify-content: flex-end
+    color: $white
 
   &__submit-button
+    color: inherit
     width: 20%
     background-color: $orange
     outline: 0
@@ -32,6 +37,7 @@
 
   &__cancel-button
     background-color: $orange
+    color: inherit
     width: 20%
     outline: 0
     border: 0
