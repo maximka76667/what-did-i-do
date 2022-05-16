@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/what-did-i-do/static/css/main.55bfbc07.css",
-    "main.js": "/what-did-i-do/static/js/main.625653dd.js",
+    "main.css": "/what-did-i-do/static/css/main.03e07794.css",
+    "main.js": "/what-did-i-do/static/js/main.f769217e.js",
     "static/media/RadioCanada-Medium.ttf": "/what-did-i-do/static/media/RadioCanada-Medium.5e4c7e2f1eb9825b2799.ttf",
     "static/media/RadioCanada-Bold.ttf": "/what-did-i-do/static/media/RadioCanada-Bold.003039c700c6d5ff6a1f.ttf",
     "static/media/RadioCanada-Regular.ttf": "/what-did-i-do/static/media/RadioCanada-Regular.d27e1bceccc9fe2a33de.ttf",
+    "static/media/loading-doggy.gif": "/what-did-i-do/static/media/loading-doggy.4d75764d9f90f5935d12.gif",
     "index.html": "/what-did-i-do/index.html",
-    "main.55bfbc07.css.map": "/what-did-i-do/static/css/main.55bfbc07.css.map",
-    "main.625653dd.js.map": "/what-did-i-do/static/js/main.625653dd.js.map"
+    "main.03e07794.css.map": "/what-did-i-do/static/css/main.03e07794.css.map",
+    "main.f769217e.js.map": "/what-did-i-do/static/js/main.f769217e.js.map"
   },
   "entrypoints": [
-    "static/css/main.55bfbc07.css",
-    "static/js/main.625653dd.js"
+    "static/css/main.03e07794.css",
+    "static/js/main.f769217e.js"
   ]
 }
