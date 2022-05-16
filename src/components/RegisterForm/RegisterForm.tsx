@@ -9,7 +9,16 @@ function RegisterForm({ onRegister }: RegisterFormInterface) {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <AuthForm onFormSubmit={onRegister} heading="Register">
-      <Input label="email" type="email" />
+      <Input
+        label="email"
+        type="email"
+        validation={{
+          pattern: {
+            value: /^\S+@\S+$/i,
+            message: "This field must be an email",
+          },
+        }}
+      />
       <Input label="name" type="text" />
       <Input label="password" type="password" />
       <div className="auth-form__submit">

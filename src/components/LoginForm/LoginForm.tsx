@@ -8,7 +8,16 @@ import "./LoginForm.sass"
 function LoginForm({ onLogin }: LoginFormInterface) {
   return (
     <AuthForm onFormSubmit={onLogin} heading="Login">
-      <Input label="email" type="email" />
+      <Input
+        label="email"
+        type="email"
+        validation={{
+          pattern: {
+            value: /^\S+@\S+$/i,
+            message: "This field must be an email",
+          },
+        }}
+      />
       <Input label="password" type="password" />
       <div className="auth-form__register">
         <Link className="auth-form__register-link" to="/signup">I don&apos;t have an account</Link>

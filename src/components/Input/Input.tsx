@@ -4,7 +4,7 @@ import { useFormContext } from "react-hook-form";
 import capitalize from "../../helpers/capitalize";
 import { InputInterface } from "../../interfaces";
 
-function Input({ label, type }: InputInterface) {
+function Input({ label, type, validation }: InputInterface) {
   const {
     watch, setValue, register, formState: { errors },
   } = useFormContext();
@@ -29,7 +29,8 @@ function Input({ label, type }: InputInterface) {
           className={`auth-form__input auth-form__${label}`}
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...register(label, {
-            required: "This is required.",
+            required: "This field is required",
+            ...validation,
           })}
           autoComplete="on"
           onChange={handleInputChange}
