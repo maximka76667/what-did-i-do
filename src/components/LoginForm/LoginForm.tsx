@@ -1,13 +1,22 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom";
-import { LoginFormInterface } from "../../interfaces";
+import { LoginFormInterface, UserInterface } from "../../interfaces";
 import AuthForm from "../AuthForm/AuthForm";
 import Input from "../Input/Input";
 import "./LoginForm.sass"
+import doggy from "../../assets/images/loading-doggy.gif";
 
 function LoginForm({ onLogin }: LoginFormInterface) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  async function handleLogin(userData: UserInterface) {
+    setIsSubmitting(true);
+    await onLogin(userData);
+    setIsSubmitting(false);
+  }
+
   return (
-    <AuthForm onFormSubmit={onLogin} heading="Login">
+    <AuthForm onFormSubmit={handleLogin} heading="Login">
       <Input
         label="email"
         type="email"
@@ -27,7 +36,13 @@ function LoginForm({ onLogin }: LoginFormInterface) {
           <input type="checkbox" name="isSavedSession" id="isSavedSession" />
           Remember me
         </label>
-        <button type="submit" className="auth-form__submit-button">Login</button>
+        <button type="submit" className="auth-form__submit-button">
+          {
+            isSubmitting
+              ? <img className="auth-form__submit-doggy" src={doggy} alt="Doggy" />
+              : "Login"
+          }
+        </button>
       </div>
     </AuthForm>
   )
