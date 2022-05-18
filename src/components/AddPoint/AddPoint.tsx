@@ -45,8 +45,12 @@ function AddPoint({ isNewPoint, addCardPoint, handleClick }: AddPointInterface) 
         onChange={onChangeNewPointName}
       />
       <div className="add-point__buttons">
-        <button type="submit" disabled={!newPointName} className="add-point__submit-button">OK</button>
-        <button type="button" className="add-point__cancel-button" onClick={handleClick}>x</button>
+        <button type="submit" disabled={!newPointName} className="add-point__submit-button">
+          <span className="add-point__check" />
+        </button>
+        <button type="button" className="add-point__cancel-button" onClick={handleClick}>
+          <span className="add-point__cancel" />
+        </button>
       </div>
     </form>
   )
