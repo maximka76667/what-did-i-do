@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/what-did-i-do/static/css/main.0c0f4657.css",
+    "main.css": "/what-did-i-do/static/css/main.25326588.css",
     "main.js": "/what-did-i-do/static/js/main.68ce3e74.js",
     "static/media/RadioCanada-Medium.ttf": "/what-did-i-do/static/media/RadioCanada-Medium.5e4c7e2f1eb9825b2799.ttf",
     "static/media/RadioCanada-Bold.ttf": "/what-did-i-do/static/media/RadioCanada-Bold.003039c700c6d5ff6a1f.ttf",
     "static/media/RadioCanada-Regular.ttf": "/what-did-i-do/static/media/RadioCanada-Regular.d27e1bceccc9fe2a33de.ttf",
     "static/media/loading-doggy.gif": "/what-did-i-do/static/media/loading-doggy.4d75764d9f90f5935d12.gif",
     "index.html": "/what-did-i-do/index.html",
-    "main.0c0f4657.css.map": "/what-did-i-do/static/css/main.0c0f4657.css.map",
+    "main.25326588.css.map": "/what-did-i-do/static/css/main.25326588.css.map",
     "main.68ce3e74.js.map": "/what-did-i-do/static/js/main.68ce3e74.js.map"
   },
   "entrypoints": [
-    "static/css/main.0c0f4657.css",
+    "static/css/main.25326588.css",
     "static/js/main.68ce3e74.js"
   ]
 }
