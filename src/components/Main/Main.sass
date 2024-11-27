@@ -3,14 +3,18 @@
 .content
   width: 90%
   margin: 0 auto
-  min-height: calc(100vh - 160px)
+  min-height: calc(92vh - 151px)
 
   @include md
     width: 100%
+    min-height: calc(96vh - 159px)
 
   &__container
     display: grid
-    grid-template-columns: repeat(3, 1fr)
+    grid-template-columns: repeat(4, 1fr)
+
+    @include xl
+      grid-template-columns: repeat(3, 1fr)
 
     @include lg
       grid-template-columns: repeat(2, 1fr)

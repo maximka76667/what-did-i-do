@@ -23,8 +23,7 @@ class Auth {
         email,
         password,
       }),
-    })
-      .then(Auth._checkResponse);
+    }).then(Auth._checkResponse);
   }
 
   login({ email, password }: UserInterface) {
@@ -37,8 +36,7 @@ class Auth {
         email,
         password,
       }),
-    })
-      .then(Auth._checkResponse);
+    }).then(Auth._checkResponse);
   }
 
   signout(token: string) {
@@ -48,8 +46,7 @@ class Auth {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-    })
-      .then(Auth._checkResponse);
+    }).then(Auth._checkResponse);
   }
 
   getEmail(token: string) {
@@ -59,11 +56,10 @@ class Auth {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-    })
-      .then(Auth._checkResponse);
+    }).then(Auth._checkResponse);
   }
 }
 
-const auth = new Auth("https://sleepy-journey-36086.herokuapp.com");
+const auth = new Auth("http://localhost:3001");
 
 export default auth;

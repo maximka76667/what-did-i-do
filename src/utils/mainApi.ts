@@ -21,8 +21,7 @@ class Api {
         authorization: this._token,
         "Content-Type": "application/json",
       },
-    })
-      .then(Api._checkResponse)
+    }).then(Api._checkResponse);
   }
 
   getProfileInfo() {
@@ -31,8 +30,7 @@ class Api {
         authorization: this._token,
         "Content-Type": "application/json",
       },
-    })
-      .then(Api._checkResponse);
+    }).then(Api._checkResponse);
   }
 
   setProfileInfo({ name, email }: UserInterface) {
@@ -46,8 +44,7 @@ class Api {
         name,
         email,
       }),
-    })
-      .then(Api._checkResponse);
+    }).then(Api._checkResponse);
   }
 
   addCard({ date, points }: Omit<CardInterface, "_id">) {
@@ -61,8 +58,7 @@ class Api {
         date,
         points,
       }),
-    })
-      .then(Api._checkResponse);
+    }).then(Api._checkResponse);
   }
 
   addPoint(cardId: string, point: Omit<PointInterface, "_id">) {
@@ -75,8 +71,7 @@ class Api {
       body: JSON.stringify({
         point,
       }),
-    })
-      .then(Api._checkResponse);
+    }).then(Api._checkResponse);
   }
 
   updatePoint(cardId: string, pointId: string, newName: string) {
@@ -89,7 +84,7 @@ class Api {
       body: JSON.stringify({
         newName,
       }),
-    })
+    });
   }
 
   deletePoint(cardId: string, pointId: string) {
@@ -99,7 +94,7 @@ class Api {
         authorization: this._token,
         "Content-Type": "application/json",
       },
-    })
+    });
   }
 
   deleteCard(cardId: string) {
@@ -108,17 +103,16 @@ class Api {
       headers: {
         authorization: this._token,
       },
-    })
-      .then(Api._checkResponse);
+    }).then(Api._checkResponse);
   }
 
   changeToken(token: string) {
-    this._token = `Bearer ${token}`
+    this._token = `Bearer ${token}`;
   }
 }
 
 const mainApi = new Api({
-  baseUrl: "https://sleepy-journey-36086.herokuapp.com",
-})
+  baseUrl: "http://localhost:3001",
+});
 
 export default mainApi;

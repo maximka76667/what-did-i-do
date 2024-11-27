@@ -1,9 +1,17 @@
 import React from "react";
-import "./Footer.sass"
+import "./Footer.sass";
 
 function Footer() {
   return (
-    <footer className="footer" />
+    <footer className="footer">
+      <p>
+        ©
+        {
+        new Date().getFullYear()
+        }
+        Maxim Grivennyy
+      </p>
+    </footer>
   );
 }
 
