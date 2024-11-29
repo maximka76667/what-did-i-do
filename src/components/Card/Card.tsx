@@ -5,11 +5,12 @@ import React, {
   useState,
 } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import mainApi from "../../utils/mainApi";
+import mainApi from "../../services/mainApi";
 import { CardComponentInterface, PointInterface } from "../../interfaces";
 import Point from "../Point/Point";
 import "./Card.sass";
 import AddPoint from "../AddPoint/AddPoint";
+import getMonthName from "../../utils/getMonthName";
 
 function Card({
   card: {
@@ -27,6 +28,7 @@ function Card({
 
   const { email } = useContext(CurrentUserContext);
 
+  const dateObject = new Date(date);
   // Todo responsive layout
 
   const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -73,11 +75,12 @@ function Card({
     setPoints(points);
     setCardId(_id);
     // eslint-disable-next-line
+    console.log(dateObject)
   }, []);
 
   return (
     <div className="card">
-      <h2 className="card__date">{date}</h2>
+      <h2 className="card__date">{dateObject.getDate()} {getMonthName(dateObject.getMonth())}, {dateObject.getFullYear()}</h2>
       {/* <p>{cardId}</p>
       <p>{owner}</p> */}
       <ul className="card__points">

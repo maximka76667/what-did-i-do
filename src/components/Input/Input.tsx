@@ -1,7 +1,7 @@
 import { ErrorMessage } from "@hookform/error-message"
 import React, { ChangeEventHandler } from "react"
 import { useFormContext } from "react-hook-form";
-import capitalize from "../../helpers/capitalize";
+import capitalize from "../../utils/capitalize";
 import { InputInterface } from "../../interfaces";
 
 function Input({ label, type, validation }: InputInterface) {

@@ -3,6 +3,17 @@
 .point
   background-color: transparent
   border: 0
+  border-radius: 5px
+  margin: 2px 0
+  padding: 5px
+  width: 100%
+  text-align: left
+  transition: all 0.1s ease-in-out
+  color: #fff
+
+  &:hover
+    background-color: $white
+    color: #000
 
   &__name
     font-weight: normal
@@ -10,9 +21,13 @@
   &-form
     &__input
       width: 100%
+      border-radius: 5px
+      margin: 2px 0
+      padding: 5px
       border: 0
       outline: 0
       box-sizing: border-box
+      font-family: "RadioCanada", "serif"
       box-shadow: 0 0 0 1px $black, 0 0 0 2px $white
 
 //   &_described:after

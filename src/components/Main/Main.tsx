@@ -21,7 +21,7 @@ function Main({ cards, changeLoginPopupVisibility }: MainInterface) {
         {name ? `, ${name}` : ""}
         ?
       </h1>
-      <p className="content__subheading">Would you like to share with me your achievements today?</p>
+      <p className="content__subheading">Would you like to share your achievements with me today?</p>
       <div className="content__container">
         {
           cards.filter(

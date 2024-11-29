@@ -112,7 +112,7 @@ class Api {
 }
 
 const mainApi = new Api({
-  baseUrl: "http://localhost:3001",
+  baseUrl: "https://wdid-api-971815910885.europe-southwest1.run.app",
 });
 
 export default mainApi;

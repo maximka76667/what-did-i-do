@@ -8,8 +8,7 @@ function Footer() {
         ©
         {
         new Date().getFullYear()
-        }
-        Maxim Grivennyy
+        } Maxim Grivennyy
       </p>
     </footer>
   );

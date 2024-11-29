@@ -18,7 +18,7 @@ function Point({
   const [isEditing, setIsEditing] = useState(false);
   const [newName, setNewName] = useState(name);
 
-  const handleDoubleClick: MouseEventHandler<HTMLDivElement> = () => {
+  const handleClick: MouseEventHandler<HTMLButtonElement> = () => {
     setIsEditing(true);
   }
 
@@ -70,9 +70,9 @@ function Point({
       {
         !isEditing
           ? (
-            <div className="point" onDoubleClick={handleDoubleClick}>
+            <button type="button" className="point" onClick={handleClick}>
               <h3 className="point__name">{pointName}</h3>
-            </div>
+            </button>
           ) : (
             <form className="point-form" onSubmit={handleSubmit}>
               <input className="point-form__input" value={newName} onChange={handleChange} />

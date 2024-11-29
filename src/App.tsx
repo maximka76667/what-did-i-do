@@ -3,8 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import "./App.sass";
 import { useNavigate } from "react-router";
 import CurrentUserContext from "./contexts/CurrentUserContext";
-import auth from "./utils/auth";
-import mainApi from "./utils/mainApi";
+import auth from "./services/auth";
+import mainApi from "./services/mainApi";
 import { CardInterface, UserFunction, UserInterface } from "./interfaces";
 import { Home, Login, Register } from "./pages";
 

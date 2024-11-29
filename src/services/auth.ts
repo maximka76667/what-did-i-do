@@ -60,6 +60,9 @@ class Auth {
   }
 }
 
-const auth = new Auth("http://localhost:3001");
+const auth = new Auth(
+  // eslint-disable-next-line comma-dangle
+  "https://wdid-api-971815910885.europe-southwest1.run.app"
+);
 
 export default auth;
